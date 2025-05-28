@@ -5,7 +5,7 @@ import ProductDta from '../ProductDta';
 
 
 function CatalogPage() {
-   const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('All');
 
   const filteredProducts = ProductDta.filter(product => {
