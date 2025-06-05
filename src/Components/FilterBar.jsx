@@ -1,6 +1,9 @@
+import Header from "./Header";
+
 function FilterBar({ searchTerm, setSearchTerm, category, setCategory }) {
   return (
     <div className="flex gap-4 mb-4">
+      
       <input
         type="text"
         placeholder="Search products..."

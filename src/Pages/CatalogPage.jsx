@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ProductList from '../Components/ProductList';
 import FilterBar from '../Components/FilterBar';
 import ProductDta from '../ProductDta';
+import Header from '../Components/Header';
 
 
 function CatalogPage() {
@@ -17,6 +18,7 @@ function CatalogPage() {
 
   return (
     <div className="p-6">
+      
       <FilterBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

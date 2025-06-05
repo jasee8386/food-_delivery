@@ -8,7 +8,12 @@ function ProductCard({ product }) {
       />
       <h2 className="text-lg font-bold">{product.name}</h2>
       <p className="text-sm text-gray-500">{product.category}</p>
-       
+        <button 
+        className="btn btn-primary mt-4"
+        onClick={() => addToCart(product)}
+      >
+        Add to Cart 🛒
+      </button>
     </div>
   );
 }

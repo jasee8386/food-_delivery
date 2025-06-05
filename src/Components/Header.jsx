@@ -21,6 +21,12 @@ function Header() {
           <nav className="space-x-4">
             <Link to="/" className="hover:underline">Home</Link>
             <Link to="/catalog" className="hover:underline">Catalog</Link>
+            <Link to="/cart" className="btn btn-sm btn-accent relative">
+              🛒 Cart
+              {cartCount > 0 && (
+                <span className="badge badge-secondary absolute -top-2 -right-3">{cartCount}</span>
+              )}
+            </Link>
              <Link to="/check-role" className="btn btn-sm btn-neutral">Login</Link>
           </nav>
 

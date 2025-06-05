@@ -9,6 +9,8 @@ import {
 import CatalogPage from './Pages/CatalogPage';
 import RoleCheck from './Components/RoleCheck';
 import AdminPage from './Pages/AdminPage';
+import { CartProvider } from './context/CartContext'; 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,12 +26,14 @@ const router = createBrowserRouter([
     path:"/check-role",
     element:<RoleCheck/>
 
-  }
+  },
+   { path: "/cart", element: <CartPage /> },
 
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <CartProvider>
      <RouterProvider router={router} />
-
+</CartProvider>
   </React.StrictMode>
 );
