@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-
+import CartPage from './Pages/CartPage';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
 
   },
    { path: "/cart", element: <CartPage /> },
+   {path:"/admin", element:<AdminPage />}
 
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
+import { CartContext } from '../context/CartContext';
+import CartPage from '../Pages/CartPage';
 function Header() {
+  const { cartItems } = useContext(CartContext);
+  const cartCount = cartItems.length;
+
   return (
     <header className="p-4 bg-warning text-white shadow">
       <div className="container mx-auto flex justify-between items-center">
@@ -21,13 +27,13 @@ function Header() {
           <nav className="space-x-4">
             <Link to="/" className="hover:underline">Home</Link>
             <Link to="/catalog" className="hover:underline">Catalog</Link>
-            <Link to="/cart" className="btn btn-sm btn-accent relative">
-              🛒 Cart
+            <Link to="/cart" className="btn btn-sm btn-circle btn-warning-content relative">
+              🛒 
               {cartCount > 0 && (
                 <span className="badge badge-secondary absolute -top-2 -right-3">{cartCount}</span>
               )}
             </Link>
-             <Link to="/check-role" className="btn btn-sm btn-neutral">Login</Link>
+             <Link to="/check-role" className="btn btn-sm btn-warning-content">Login</Link>
           </nav>
 
           {/* Theme Toggle */}

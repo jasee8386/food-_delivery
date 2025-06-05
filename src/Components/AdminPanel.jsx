@@ -1,23 +1,39 @@
-// src/Components/AdminPanel.jsx
+
 import { useState, useEffect } from "react";
 
 export default function AdminPanel() {
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-
+ const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("products") || "[]");
     setProducts(stored);
   }, []);
 
   const handleAdd = () => {
-    if (!name || !price) return alert("Enter name and price");
-    const newProduct = { id: Date.now(), name, price };
+    if (!name || !price || !image || !category) {
+      return alert("Please fill in all fields");
+    }
+
+    const newProduct = {
+      id: Date.now(),
+      name,
+      price,
+      image,
+      category,
+    };
+
     const updated = [...products, newProduct];
     setProducts(updated);
     localStorage.setItem("products", JSON.stringify(updated));
-    setName(""); setPrice("");
+
+    // Clear input fields
+    setName("");
+    setPrice("");
+    setImage("");
+    setCategory("");
   };
 
   const handleDelete = (id) => {
@@ -41,15 +57,41 @@ export default function AdminPanel() {
           placeholder="Price"
           className="border p-2 rounded w-1/2"
         />
-        <button onClick={handleAdd} className="bg-green-600 text-white px-4 py-2 rounded">
+         <input
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          placeholder="Image URL"
+          className="border p-2 rounded"
+        />
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="border p-2 rounded"
+        >  <option value="">Select Category</option>
+          <option value="Starters">Starters</option>
+          <option value="Drinks">Drinks</option>
+          <option value="Snacks">Fast Food</option>
+          <option value="Meals">Meals</option>
+          <option value="Desserts">Desserts</option>
+        </select>
+               <button
+          onClick={handleAdd}
+          className="bg-green-600 text-white px-4 py-2 rounded col-span-1 md:col-span-2"
+        >
           Add
         </button>
       </div>
 
+      {/* Product List */}
       <ul className="space-y-2">
         {products.map(p => (
-          <li key={p.id} className="flex justify-between border p-2 rounded shadow">
-            <span>{p.name} - ₹{p.price}</span>
+          <li key={p.id} className="flex flex-col md:flex-row gap-2 border p-4 rounded shadow items-center">
+            <img src={p.image} alt={p.name} className="w-32 h-24 object-cover rounded" />
+            <div className="flex-1">
+              <h3 className="font-bold">{p.name} - ₹{p.price}</h3>
+              <p className="text-sm text-gray-500">Category: {p.category}</p>
+            </div>
+        
             <button onClick={() => handleDelete(p.id)} className="bg-red-500 text-white px-3 rounded">
               Delete
             </button>

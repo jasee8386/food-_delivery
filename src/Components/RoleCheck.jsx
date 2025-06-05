@@ -4,6 +4,9 @@ export default function RoleCheck() {
   const [showAuth, setShowAuth] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
+const [adminUsername, setAdminUsername] = useState("");
+const [adminPassword, setAdminPassword] = useState("");
+
   const handleLoginClick = () => {
     const adminLogin = window.confirm("Are you an admin?");
     setIsAdmin(adminLogin);
@@ -26,21 +29,37 @@ export default function RoleCheck() {
           {isAdmin ? (
             // Admin Login Form
             <>
-              <h2 className="text-2xl font-semibold mb-4">Admin Login</h2>
-              <input
-                type="text"
-                placeholder="Admin Username"
-                className="w-full border p-2 mb-3 rounded"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full border p-2 mb-4 rounded"
-              />
-              <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
-                Login
-              </button>
-            </>
+  <h2 className="text-2xl font-semibold mb-4">Admin Login</h2>
+  <input
+    type="text"
+    placeholder="Admin Username"
+    value={adminUsername}
+    onChange={(e) => setAdminUsername(e.target.value)}
+    className="w-full border p-2 mb-3 rounded"
+  />
+  <input
+    type="password"
+    placeholder="Password"
+    value={adminPassword}
+    onChange={(e) => setAdminPassword(e.target.value)}
+    className="w-full border p-2 mb-4 rounded"
+  />
+  <button
+    onClick={() => {
+      if (adminUsername === "admin" && adminPassword === "1234") {
+        localStorage.setItem("admin", JSON.stringify({ username: "admin" }));
+        alert("Admin logged in successfully!");
+        window.location.href = "/admin"; 
+      } else {
+        alert("Invalid admin credentials");
+      }
+    }}
+    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+  >
+    Login
+  </button>
+</>
+
           ) : (
             // User Tabs for Login/Signup
             <UserAuthTabs />
