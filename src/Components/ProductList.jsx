@@ -3,14 +3,8 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import staticProducts from "../ProductDta";
 
-export default function ProductList() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("products"));
-    setProducts(storedProducts && storedProducts.length > 0 ? storedProducts : staticProducts);
-  }, []);
-
+export default function ProductList({ products }) {
+ 
   const handleAddToCart = (product) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const updatedCart = [...existingCart, product];

@@ -7,6 +7,7 @@ export default function AdminPanel() {
   const [price, setPrice] = useState("");
  const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+  const [weather, setWeather] = useState(localStorage.getItem("weather") || "Sunny");
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("products") || "[]");
     setProducts(stored);
@@ -42,6 +43,11 @@ export default function AdminPanel() {
     localStorage.setItem("products", JSON.stringify(updated));
   };
 
+  const handleWeatherChange = (e) => {
+    const selected = e.target.value;
+    setWeather(selected);
+    localStorage.setItem("weather", selected);
+  };
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
@@ -66,7 +72,7 @@ export default function AdminPanel() {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-gray-400"
         >  <option value="">Select Category</option>
           <option value="Starters">Starters</option>
           <option value="Drinks">Drinks</option>
@@ -82,6 +88,20 @@ export default function AdminPanel() {
         </button>
       </div>
 
+ {/* Weather Control Section */}
+      <div className="p-4 border rounded bg-blue-50 shadow-md">
+        <h2 className="text-lg text-gray-600 font-semibold mb-2">🌦️ Set Current Weather</h2>
+        <select
+          value={weather}
+          onChange={handleWeatherChange}
+          className="border p-2 rounded"
+        >
+          <option value="Sunny">Sunny</option>
+          <option value="Rainy">Rainy</option>
+          <option value="Cloudy">Cloudy</option>
+        </select>
+        <p className="mt-2 text-sm text-gray-600">Current: <strong>{weather}</strong></p>
+      </div>
       {/* Product List */}
       <ul className="space-y-2">
         {products.map(p => (

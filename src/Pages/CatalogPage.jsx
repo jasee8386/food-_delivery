@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ProductList from '../Components/ProductList';
 import FilterBar from '../Components/FilterBar';
 import Header from '../Components/Header';
+import ProductDta from '../ProductDta';
 
 function CatalogPage() {
   const [products, setProducts] = useState([]);
@@ -32,10 +33,12 @@ function CatalogPage() {
       (category === 'All' || product.category === category)
     );
   });
-
+console.log("searchTerm:", searchTerm);
+console.log("category:", category);
+console.log("filteredProducts:", filteredProducts);
   return (
     <div className="p-6">
-      <Header />
+     
       <FilterBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
