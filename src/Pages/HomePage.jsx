@@ -1,6 +1,7 @@
+import CatalogPage from "./CatalogPage";
 function HomePage() {
   return (
-
+<>
 <div
   className="hero min-h-screen"
   style={{
@@ -19,6 +20,11 @@ function HomePage() {
     </div>
   </div>
 </div>
+ <section className="p-4 bg-base-100">
+        <h2 className="text-3xl font-bold mb-4 text-center">Our Menu</h2>
+        <CatalogPage /> {/* Replace with <ProductList /> if using that component directly */}
+      </section>
+</>
 );
 }
 
