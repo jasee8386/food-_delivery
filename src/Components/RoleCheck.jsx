@@ -14,7 +14,7 @@ const [adminPassword, setAdminPassword] = useState("");
   };
 
   return (
-    <div className="min-h-screen bg-warning flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-base-100 flex flex-col items-center justify-center px-4">
       <h1 className="text-4xl font-bold mb-6">Delicious Food at Your Fingertips 🥗</h1>
       <button
         onClick={handleLoginClick}

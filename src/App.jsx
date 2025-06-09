@@ -8,7 +8,7 @@ import AdminPage from './Pages/AdminPage';
 function App() {
   return (
     <>
-      <Header />
+  
 
       <main className="p-4">
         <Routes>
@@ -18,7 +18,7 @@ function App() {
              <Route path="/admin" element={<AdminPage />} /> 
         </Routes>
       </main>
-      <Footer/>
+    
     </>
   );
 }

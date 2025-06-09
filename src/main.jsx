@@ -10,13 +10,17 @@ import CatalogPage from './Pages/CatalogPage';
 import RoleCheck from './Components/RoleCheck';
 import AdminPage from './Pages/AdminPage';
 import { CartProvider } from './context/CartContext'; 
-
+import Root from "./routes/root";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
-  },
+    element: <Root />,
   
+   children: [
+      {
+        path: "/",
+        element: <App />,
+      },   
   {
     path:"/catalog",
     element:<CatalogPage/>
@@ -29,6 +33,7 @@ const router = createBrowserRouter([
   },
    { path: "/cart", element: <CartPage /> },
    {path:"/admin", element:<AdminPage />}
+ ],},
 
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

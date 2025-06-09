@@ -94,7 +94,7 @@ export default function AdminPanel() {
         <select
           value={weather}
           onChange={handleWeatherChange}
-          className="border p-2 rounded"
+          className="border p-2 rounded text-gray-500"
         >
           <option value="Sunny">Sunny</option>
           <option value="Rainy">Rainy</option>
