@@ -39,6 +39,12 @@ const [weather, setWeather] = useState("Sunny");
               </div>
             </div>
             <button
+              className="btn btn-success btn-sm"
+            
+            >
+             Buy Now
+            </button>
+            <button
               className="btn btn-error btn-sm"
               onClick={() => removeFromCart(item.id)}
             >

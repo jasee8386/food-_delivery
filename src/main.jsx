@@ -11,6 +11,7 @@ import RoleCheck from './Components/RoleCheck';
 import AdminPage from './Pages/AdminPage';
 import { CartProvider } from './context/CartContext'; 
 import Root from "./routes/root";
+import UserPage from './Pages/UserPage';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
 
   },
    { path: "/cart", element: <CartPage /> },
-   {path:"/admin", element:<AdminPage />}
+   {path:"/admin", element:<AdminPage />},
+   {path:"/user", element:<UserPage />}
  ],},
 
 ]);
